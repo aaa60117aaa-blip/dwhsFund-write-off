@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<title>臺南市立大灣高級中學 報支系統</title>
+<title>報支系統</title>
 <style>
 /* ===== 螢幕操作介面 ===== */
 @media screen {
@@ -373,11 +373,16 @@ function smartPrint() {
   const typeName = typeMap[currentType] || '報支單';
 
   const origTitle = document.title;
-  document.title = `${dateStr}_${subject}_${typeName}`;
+  const newTitle = `${dateStr}_${subject}_${typeName}`;
+  document.title = newTitle;
+  document.querySelector('title').textContent = newTitle;
   setTimeout(() => {
     window.print();
-    setTimeout(() => { document.title = origTitle; }, 2000);
-  }, 200);
+    setTimeout(() => {
+      document.title = origTitle;
+      document.querySelector('title').textContent = origTitle;
+    }, 2000);
+  }, 300);
 }
 
 // ============ 狀態 ============
@@ -1089,19 +1094,7 @@ function renderExpLow(amt, dept, reason, purpose, dateStr, info, code) {
       </td>
       <td style="border:1px solid black; border-left:none; padding:0; vertical-align:top;">
         <table style="width:100%; border-collapse:collapse;">
-          <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif; white-space:pre-wrap; word-break:break-all; vertical-align:top;">${purpose}</td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
+          ${(()=>{const lines=purpose.split('\n');const rows=13;let html='';for(let i=0;i<rows;i++){html+=`<tr><td style="height:10mm;border:none;border-bottom:1px solid #aaa;padding:0 6px;font-size:11pt;font-family:'標楷體','DFKai-SB',serif;line-height:10mm;vertical-align:bottom;overflow:hidden;white-space:nowrap;">${lines[i]||''}</td></tr>`;}return html;})()}
         </table>
       </td>
     </tr>
@@ -1208,19 +1201,7 @@ function renderExpHigh(amt, dept, reason, purpose, dateStr, info, code) {
       </td>
       <td style="border:1px solid black; border-left:none; padding:0; vertical-align:top;">
         <table style="width:100%; border-collapse:collapse;">
-          <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif; white-space:pre-wrap; word-break:break-all; vertical-align:top;">${purpose}</td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
-    <tr><td style="height:10mm; border:none; border-bottom:1px solid #aaa; padding:2px 6px; font-size:11pt; font-family:'標楷體','DFKai-SB',serif;"></td></tr>
+          ${(()=>{const lines=purpose.split('\n');const rows=13;let html='';for(let i=0;i<rows;i++){html+=`<tr><td style="height:10mm;border:none;border-bottom:1px solid #aaa;padding:0 6px;font-size:11pt;font-family:'標楷體','DFKai-SB',serif;line-height:10mm;vertical-align:bottom;overflow:hidden;white-space:nowrap;">${lines[i]||''}</td></tr>`;}return html;})()}
         </table>
       </td>
     </tr>
