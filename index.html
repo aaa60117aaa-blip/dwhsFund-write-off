@@ -374,8 +374,10 @@ function smartPrint() {
 
   const origTitle = document.title;
   document.title = `${dateStr}_${subject}_${typeName}`;
-  window.print();
-  setTimeout(() => { document.title = origTitle; }, 1000);
+  setTimeout(() => {
+    window.print();
+    setTimeout(() => { document.title = origTitle; }, 2000);
+  }, 200);
 }
 
 // ============ 狀態 ============
