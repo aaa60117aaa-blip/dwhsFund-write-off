@@ -365,10 +365,10 @@ function smartPrint() {
   const subject = (reasonText || purposeText || '').replace(/[\r\n\s]+/g,' ').substring(0,12) || '未填事項';
 
   const typeMap = {
-    'PUR_LOW':  '請購單以下',
-    'PUR_HIGH': '請購單以上',
-    'EXP_LOW':  '動支單以下',
-    'EXP_HIGH': '動支單以上'
+    'PUR_LOW':  '請購單',
+    'PUR_HIGH': '請購單',
+    'EXP_LOW':  '動支單',
+    'EXP_HIGH': '動支單'
   };
   const typeName = typeMap[currentType] || '報支單';
 
